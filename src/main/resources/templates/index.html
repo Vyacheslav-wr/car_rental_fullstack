@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/slider.css"/>
+    <link rel="stylesheet" href="/css/chief-slider-with-prefixes.min.css">
+    <script defer src="/js/chief-slider.min.js"></script>
+    <script src="/js/slider.js"></script>
+</head>
+<body>
+    <div class="header" th:replace="fragments/header.html::header"></div>
+    <div class="container">
+        <div class="slider">
+            <div class="slider__container">
+                <div class="slider__wrapper">
+                    <div class="slider__items">
+                        <div th:each="car:${cars}" class="slider__item">
+                            <img th:src="'/images/' + ${car.getMark() + '.png'}" height="60px" width="30%"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="slider__control" data-slide="prev"></a>
+            <a href="#" class="slider__control" data-slide="next"></a>
+        </div>
+    </div>
+</body>
+</html>

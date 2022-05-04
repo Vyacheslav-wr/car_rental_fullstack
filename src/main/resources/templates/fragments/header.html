@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="header" th:fragment="header">
+        <div>
+            <img src="/images/KIA RIO X.png" height="60px" width="30%"/>
+        </div>
+        <div class="user" th:if="${user} ne null">
+            <a href="#" th:text="${user.getProfile().getFirstName() + ' ' + user.getProfile().getLastName()}"/>
+            <a href="#">Orders</a>
+            <a href="/auth/logout">Log out</a>
+        </div>
+        <div th:unless="${user} ne null">
+            <a href="/auth/login">Sing in</a>
+            <a href="/auth/register">Sing up</a>
+        </div>
+    </div>
+</body>
+</html>

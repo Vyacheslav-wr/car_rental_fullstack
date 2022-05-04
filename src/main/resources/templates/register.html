@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/css/register.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <script src="/js/register.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="screen">
+        <div class="screen__content">
+            <form class="login" action="/authAccount/create
+" method="post">
+                <h1>Register</h1>
+                <div class="first_page">
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" id="username" name="username" placeholder="User name" required>
+                    </div>
+                    <p th:if="${error} ne null">User with such username already exist</p>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" class="login__input" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" class="login__input" id="repeat_password" name="repeat_password" placeholder="Repeat Password" required>
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="email" class="login__input" id="email" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="second_page">
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" id="firstName" name="firstName" placeholder="First Name" required>
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" id="lastName" name="lastName" placeholder="Last Name" required>
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" id="middleName" name="middleName" placeholder="Middle Name">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="number" class="login__input" id="age" name="age" placeholder="Age">
+                    </div>
+                </div>
+                <button type="button" class="button login__submit next_button" onclick="return changePageTo2()">
+                    <span class="button__text">Next Step</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+                <button class="button login__submit reg_button">
+                    <span class="button__text">Register Now</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+                <button type="button" class="back_button" onclick="changePageTo1()">
+                    <span class="button__text">Back</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+            </form>
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

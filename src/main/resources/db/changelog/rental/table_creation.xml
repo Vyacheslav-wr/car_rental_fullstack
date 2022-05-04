@@ -1,0 +1,120 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet  id="table_creation"  author="vyacheslav.salei">
+        <createTable  tableName="auth_account">
+            <column  name="id"  type="serial" autoIncrement="true">
+                <constraints  primaryKey="true"  nullable="false"/>
+            </column>
+            <column  name="login"  type="varchar(200)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="password"  type="varchar(200)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="email"  type="varchar(200)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="status"  type="varchar(200)" defaultValue="NOTAPPROVED">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="profile_id" type="int"/>
+            <column  name="data_for_purchase_id" type="int"/>
+            <column  name="role_id"  type="int"/>
+            <column  name="license_id"  type="int"/>
+        </createTable>
+
+        <createTable tableName="car">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="mark" type="varchar(200)"/>
+            <column name="mileage" type="int"/>
+            <column name="booster" type="boolean"/>
+            <column name="charger" type="boolean"/>
+            <column name="toning" type="boolean"/>
+            <column name="cooler" type="boolean"/>
+            <column name="status" type="varchar(200)"/>
+            <column name="back_camera" type="boolean"/>
+            <column name="climate_control" type="boolean"/>
+            <column name="car_type" type="varchar(200)"/>
+        </createTable>
+
+        <createTable tableName="condition">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="condition" type="varchar(50)"/>
+        </createTable>
+
+        <createTable tableName="data_for_purchase">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="card_number" type="varchar(50)"/>
+            <column name="status" type="varchar(200)"/>
+        </createTable>
+
+        <createTable tableName="driver_license">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="license_identity" type="varchar(200)"/>
+            <column name="license_category" type="varchar(200)"/>
+            <column name="license_status" type="varchar(200)"/>
+        </createTable>
+
+        <createTable tableName="order">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="status" type="varchar(50)"/>
+            <column name="auth_account_id" type="int"/>
+            <column name="car_id" type="int"/>
+            <column name="rate_id" type="int"/>
+            <column name="total_sum" type="varchar(50)"/>
+            <column name="date" type="date"/>
+        </createTable>
+
+        <createTable tableName="profile">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="first_name" type="varchar(200)"/>
+            <column name="last_name" type="varchar(200)"/>
+            <column name="middle_name" type="varchar(200)"/>
+            <column name="phone_number" type="varchar(200)"/>
+            <column name="age" type="int"/>
+        </createTable>
+
+        <createTable tableName="rental_rate">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="measurements" type="varchar(200)"/>
+            <column name="amount" type="double precision"/>
+            <column name="amount_for_kilometer" type="double precision"/>
+        </createTable>
+
+        <createTable tableName="user_role">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"></constraints>
+            </column>
+            <column name="role" type="varchar(200)"/>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="auth_account" baseColumnNames="role_id" constraintName="fk_aa_to_role"
+                                 referencedTableName="user_role"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="auth_account" baseColumnNames="profile_id" constraintName="fk_aa_to_profile"
+                                 referencedTableName="profile"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="auth_account" baseColumnNames="data_for_purchase_id" constraintName="fk_aa_to_data"
+                                 referencedTableName="data_for_purchase"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="auth_account" baseColumnNames="license_id" constraintName="fk_aa_to_license"
+                                 referencedTableName="driver_license"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
