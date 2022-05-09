@@ -1,0 +1,70 @@
+.rental-rates-container {
+    margin-top: 156px;
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+}
+.rental-tate-measurements {
+    display: flex;
+    border-bottom: 2px solid #383456;
+    border-radius: 10px;
+}
+
+h2 {
+    color: #383456;
+}
+
+.measurement {
+    padding: 20px 40px;
+}
+
+.rental-rate-items {
+    box-shadow: 0 0 10px black;
+    border-radius: 10px;
+    background-color: #8575d6;
+}
+
+h2:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#hours {
+    border-right: 2px solid #383456;
+    border-left: 2px solid #383456;
+}
+
+.rental-rate-list {
+    display: block;
+    width: 100%;
+}
+
+.rental-rate {
+    display: flex;
+    width: 100%;
+}
+
+.rental-rate-header {
+    border-bottom: 2px solid #383456;
+    border-radius: 10px;
+}
+
+.text-area {
+    color: #383456;
+    text-align: center;
+}
+
+.cell-item {
+    width: 50%;
+    padding-bottom: 15px;
+}
+
+.house-image-container {
+    width: 100%;
+}
+
+.house-image {
+    width: 50%;
+    height: 100%;
+}

@@ -2,6 +2,8 @@ package by.salei.rental.service;
 
 import by.salei.rental.entity.BaseEntity;
 import by.salei.rental.service.api.BaseService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +31,15 @@ public class BaseServiceImpl <E extends BaseEntity, R extends CrudRepository> im
 
     @Override
     public Optional<E> getById(Integer id) {
-        return repository.findById(id);
+        return getDefaultRepo().findById(id);
     }
 
     @Override
     public Iterable<E> getAll() {
         return repository.findAll();
+    }
+
+    public R getDefaultRepo(){
+        return null;
     }
 }

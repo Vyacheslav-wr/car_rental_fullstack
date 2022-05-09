@@ -6,15 +6,21 @@
 </head>
 <body>
     <div class="header" th:fragment="header">
-        <div>
-            <img src="/images/KIA RIO X.png" height="60px" width="30%"/>
+        <div class="user">
+            <a href="/rates/catalog">Rental rates</a>
+        </div>
+        <div class="user">
+            <a href="/car/catalog">Cars to order</a>
+        </div>
+        <div class="user">
+
         </div>
         <div class="user" th:if="${user} ne null">
-            <a href="#" th:text="${user.getProfile().getFirstName() + ' ' + user.getProfile().getLastName()}"/>
-            <a href="#">Orders</a>
+            <a th:href="${'/authAccount/' + user.getId()}" th:text="${user.getProfile().getFirstName() + ' ' + user.getProfile().getLastName()}"/>
+            <a th:href="${'/authAccount/' + user.getId() + '/orders'}">Orders</a>
             <a href="/auth/logout">Log out</a>
         </div>
-        <div th:unless="${user} ne null">
+        <div class="user" th:unless="${user} ne null">
             <a href="/auth/login">Sing in</a>
             <a href="/auth/register">Sing up</a>
         </div>

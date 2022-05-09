@@ -1,7 +1,3 @@
-function validateFirstPage() {
-
-}
-
 function changePageTo2() {
 
     var div1 = document.getElementsByClassName("first_page").item(0);

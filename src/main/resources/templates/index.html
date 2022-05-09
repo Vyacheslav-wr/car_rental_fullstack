@@ -2,31 +2,84 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Best carsharing</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
     <link rel="stylesheet" type="text/css" href="/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/css/header.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/slider.css"/>
     <link rel="stylesheet" href="/css/chief-slider-with-prefixes.min.css">
     <script defer src="/js/chief-slider.min.js"></script>
     <script src="/js/slider.js"></script>
 </head>
 <body>
     <div class="header" th:replace="fragments/header.html::header"></div>
-    <div class="container">
-        <div class="slider">
-            <div class="slider__container">
-                <div class="slider__wrapper">
-                    <div class="slider__items">
-                        <div th:each="car:${cars}" class="slider__item">
-                            <img th:src="'/images/' + ${car.getMark() + '.png'}" height="60px" width="30%"/>
+    <h1 style="text-align:center; padding-top:100px; color: #383456">Наши тачки</h1>
+    <div class="slider">
+        <div class="slider__container">
+            <div class="slider__wrapper">
+                <div class="slider__items">
+                    <div th:each="car:${cars}" class="slider__item">
+                        <div class="car-and-spec">
+                            <img class="car" th:src="'/images/' + ${car.getMark() + '.png'}" height="60px" width="30%"/>
+                        </div>
+                        <div class="car-and-spec">
+                            <h2 style="font-family: 'Open Sans',sans-serif !important; color: #383456;" th:text="${car.getMark()}"></h2>
+                        </div>
+                        <div class="car-and-spec car-spec-items">
+                            <div th:if="${car.getBackCamera() ne null}" class="car-and-spec-item">
+                                <div class="image-position">
+                                    <img class="image-tem" src="/images/back_camera.png">
+                                </div>
+                                <div class="spec-item">
+                                    <h3>Камера заднего вида</h3>
+                                </div>
+                            </div>
+                            <div th:if="${car.getBooster() ne null}" class="car-and-spec-item">
+                                <div class="image-position">
+                                    <img class="image-tem" src="/images/booster.png">
+                                </div>
+                                <div class="spec-item">
+                                    <h3>Бустер</h3>
+                                </div>
+                            </div>
+                            <div th:if="${car.getCharger() ne null}" class="car-and-spec-item">
+                                <div class="image-position">
+                                    <img class="image-tem" src="/images/charger.png">
+                                </div>
+                                <div class="spec-item">
+                                    <h3>Зарядное Устройство</h3>
+                                </div>
+                            </div>
+                            <div th:if="${car.getClimateControl() ne null}" class="car-and-spec-item">
+                                <div class="image-position">
+                                    <img class="image-tem" src="/images/climate_control.png">
+                                </div>
+                                <div class="spec-item">
+                                    <h3>Климат контроль</h3>
+                                </div>
+                            </div>
+                            <div th:if="${car.getCooler() ne null}" class="car-and-spec-item">
+                                <div class="image-position">
+                                    <img class="image-tem" src="/images/cooler.png">
+                                </div>
+                                <div class="spec-item">
+                                    <h3>Кулер</h3>
+                                </div>
+                            </div>
+                            <div th:if="${car.getToning() ne null}" class="car-and-spec-item">
+                                <div class="image-position">
+                                    <img class="image-tem" src="/images/toning.png">
+                                </div>
+                                <div class="spec-item">
+                                    <h3>Тонирование</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="#" class="slider__control" data-slide="prev"></a>
-            <a href="#" class="slider__control" data-slide="next"></a>
         </div>
+        <a href="#" class="slider__control" data-slide="prev"></a>
+        <a href="#" class="slider__control" data-slide="next"></a>
     </div>
 </body>
 </html>

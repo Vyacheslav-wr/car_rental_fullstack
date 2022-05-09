@@ -26,7 +26,7 @@
 
         <createTable tableName="car">
             <column name="id" type="serial" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"></constraints>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="mark" type="varchar(200)"/>
             <column name="mileage" type="int"/>
@@ -42,14 +42,14 @@
 
         <createTable tableName="condition">
             <column name="id" type="serial" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"></constraints>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="condition" type="varchar(50)"/>
         </createTable>
 
         <createTable tableName="data_for_purchase">
             <column name="id" type="serial" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"></constraints>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="card_number" type="varchar(50)"/>
             <column name="status" type="varchar(200)"/>
@@ -57,28 +57,28 @@
 
         <createTable tableName="driver_license">
             <column name="id" type="serial" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"></constraints>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="license_identity" type="varchar(200)"/>
             <column name="license_category" type="varchar(200)"/>
             <column name="license_status" type="varchar(200)"/>
         </createTable>
 
-        <createTable tableName="order">
+        <createTable tableName="order_table">
             <column name="id" type="serial" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"></constraints>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="status" type="varchar(50)"/>
+            <column name="status" type="varchar(200)"/>
             <column name="auth_account_id" type="int"/>
             <column name="car_id" type="int"/>
             <column name="rate_id" type="int"/>
-            <column name="total_sum" type="varchar(50)"/>
-            <column name="date" type="date"/>
+            <column name="total_sum" type="varchar(200)"/>
+            <column name="date" type="TIMESTAMP"/>
         </createTable>
 
         <createTable tableName="profile">
             <column name="id" type="serial" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"></constraints>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="first_name" type="varchar(200)"/>
             <column name="last_name" type="varchar(200)"/>
@@ -89,11 +89,12 @@
 
         <createTable tableName="rental_rate">
             <column name="id" type="serial" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"></constraints>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="measurements" type="varchar(200)"/>
-            <column name="amount" type="double precision"/>
-            <column name="amount_for_kilometer" type="double precision"/>
+            <column name="amount" type="int"/>
+            <column name="cost" type="double precision"/>
+            <column name="cost_for_kilometer" type="double precision"/>
         </createTable>
 
         <createTable tableName="user_role">
@@ -114,6 +115,15 @@
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="auth_account" baseColumnNames="license_id" constraintName="fk_aa_to_license"
                                  referencedTableName="driver_license"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="order_table" baseColumnNames="auth_account_id" constraintName="fk_order_to_aa"
+                                 referencedTableName="auth_account"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="order_table" baseColumnNames="car_id" constraintName="fk_order_to_car"
+                                 referencedTableName="car"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="order_table" baseColumnNames="rate_id" constraintName="fk_order_to_rate"
+                                 referencedTableName="rental_rate"
                                  referencedColumnNames="id"/>
     </changeSet>
 

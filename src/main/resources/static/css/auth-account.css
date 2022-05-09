@@ -1,0 +1,26 @@
+.auth-account-wrapper {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.auth-account-info {
+    display: block;
+    margin: 40px;
+    width: 600px;
+    justify-content: center;
+    position: center;
+}
+
+label {
+    font-size: 24px;
+}
+
+input {
+    font-size: 24px;
+    display: flex;
+}
+
+.margin-bottom-div {
+    margin: 20px;
+}

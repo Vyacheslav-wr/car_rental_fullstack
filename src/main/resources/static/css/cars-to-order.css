@@ -1,0 +1,25 @@
+.car-items-container {
+    padding-top: 156px
+}
+
+.cars-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+}
+
+.filters {
+    width: 30%;
+}
+
+.car {
+    width: 270px;
+    height: 300px;
+    margin: 40px;
+    cursor: pointer;
+}
+
+.car-image {
+    width: 100%;
+    height: 100%;
+}

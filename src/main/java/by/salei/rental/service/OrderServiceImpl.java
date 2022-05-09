@@ -11,6 +11,7 @@ import by.salei.rental.service.api.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, OrderRepository> im
         if(car.isPresent() && rentalRate.isPresent()) {
             order.setCar(car.get());
             order.setRate(rentalRate.get());
-            order.setStatus(OrderStatus.INPROGRESS);
+//            order.setStatus(OrderStatus.INPROGRESS);
             order.setDate(new Date());
 
             orderRepository.save(order);

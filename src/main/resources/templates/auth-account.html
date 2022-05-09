@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.getProfile().getFirstName() + ' ' + user.getProfile().getLastName()}"></title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/auth-account.css"/>
+</head>
+<body>
+    <div class="header" th:replace="fragments/header.html::header"></div></body>
+    <div class="auth-account-wrapper">
+        <form action="#" method="post">
+            <div class="auth-account-info">
+                <div class="margin-bottom-div">
+                    <label for="username">Login: </label>
+                    <input id="username" th:value="${user.getLogin()}"/>
+                </div>
+                <div class="margin-bottom-div">
+                    <label for="password">Password: </label>
+                    <input id="password" type="password" th:value="${user.getPassword()}"/>
+                </div>
+                <div class="margin-bottom-div">
+                    <label for="rep_password">Repeat Password</label>
+                    <input id="rep_password" type="password"/>
+                </div>
+                <div class="margin-bottom-div">
+                    <label for="email">Email: </label>
+                    <input id="email" type="email" th:value="${user.getEmail()}"/>
+                </div>
+                <div class="margin-bottom-div">
+                    <label for="first_name">First Name: </label>
+                    <input id="first_name" th:value="${user.getProfile().getFirstName()}"/>
+                </div>
+                <div class="margin-bottom-div">
+                    <label for="last_name">Last Name: </label>
+                    <input id="last_name" th:value="${user.getProfile().getLastName()}"/>
+                </div>
+                <div class="margin-bottom-div">
+                    <label for="middle_name">Middle Name: </label>
+                    <input id="middle_name" th:value="${user.getProfile().getMiddleName()}"/>
+                </div>
+                <div class="margin-bottom-div">
+                    <label for="phone_number">Phone Number: </label>
+                    <input id="phone_number" th:value="${user.getProfile().getPhoneNumber()}"/>
+                </div>
+                <div class="margin-bottom-div">
+                    <label for="age">Age: </label>
+                    <input id="age" th:value="${user.getProfile().getAge()}"/>
+                </div>
+                <div>
+                    <button type="submit">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

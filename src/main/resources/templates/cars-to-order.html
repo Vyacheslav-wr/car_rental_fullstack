@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cars-to-order.css"/>
+    <script src="/js/car.js"></script>
+</head>
+<body>
+    <div class="header" th:replace="fragments/header.html::header"></div>
+    <div class="car-items-container">
+        <div class="filters">
+
+        </div>
+        <div class="cars-wrapper">
+            <div th:each="car:${cars}" class="car" th:onclick="'getCarById(\'' + ${car.getId()} + '\');'">
+                <div class="car-image-wrapper">
+                    <img th:src="${'/images/' + car.getMark() + '.png'}" class="car-image">
+                </div>
+                <div class="car-name">
+                    <h2 th:text="${car.getMark()}"></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

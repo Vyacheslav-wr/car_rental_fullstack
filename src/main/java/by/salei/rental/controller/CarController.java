@@ -1,74 +1,73 @@
 package by.salei.rental.controller;
 
-import by.salei.rental.entity.Car;
 import by.salei.rental.entity.CarStatus;
-import by.salei.rental.entity.Order;
+import by.salei.rental.repo.AuthAccountRepository;
 import by.salei.rental.repo.CarRepository;
 import by.salei.rental.repo.RentalRateRepository;
 import by.salei.rental.service.api.CarService;
 import by.salei.rental.service.api.OrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/catalog")
+@RequestMapping("/car")
 public class CarController {
 
     private final CarService carService;
     private final CarRepository repository;
     private final RentalRateRepository rentalRepository;
     private final OrderService orderService;
+    private final AuthAccountRepository authAccountRepository;
 
-//    @GetMapping()
-//    public ModelAndView getAllMarks() {
-//
-//        ModelAndView mv = new ModelAndView();
-//
-//        Iterable<Car> cars = repository.findAll();
-//
-//        mv.addObject("cars", cars);
-//
-//        return mv;
-//    }
+    @GetMapping("/catalog")
+    public ModelAndView getAllMarks() {
 
-    @GetMapping("/car/{id}")
+        ModelAndView mv = new ModelAndView("cars-to-order");
+
+        mv.addObject("cars", repository.findAllByStatus(CarStatus.FREE));
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        if(authAccountRepository.findByLogin(userName) != null) {
+            mv.addObject("user", authAccountRepository.findByLogin(userName));
+        }
+
+        return mv;
+    }
+
+    @GetMapping("/{id}")
     public ModelAndView getCar(@PathVariable(name = "id") Integer id) {
 
-        ModelAndView mv = new ModelAndView();
+        ModelAndView mv = new ModelAndView("car");
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        Optional<Car> car = carService.getById(id);
+        if(authAccountRepository.findByLogin(userName) != null) {
+            mv.addObject("user", authAccountRepository.findByLogin(userName));
+        }
 
-        mv.addObject("cars", car);
-
-        return mv;
-    }
-
-    @GetMapping("")
-    public ModelAndView getAllFreeCars() {
-
-        ModelAndView mv = new ModelAndView();
-
-        List<Car> cars = repository.findAllByStatus(CarStatus.FREE.toString());
-
-        mv.addObject("cars", cars);
+        if(carService.getById(id).isPresent()) {
+            mv.addObject("car", carService.getById(id).get());
+            mv.addObject("rentals", rentalRepository.findAll());
+        }
+        else {
+            throw new EntityNotFoundException();
+        }
 
         return mv;
     }
 
-    @GetMapping("/car/rent")
-    public ModelAndView rentACar(@RequestParam(name = "id") Integer id, @RequestParam(name = "rate_id") Integer rate_id) {
+    @PostMapping("/car/{id}/rent")
+    public ModelAndView rentACar(@PathVariable(name = "id") Integer id, @RequestParam(name = "rate_id") Integer rate_id) {
 
         if(repository.findById(id).isEmpty() || rentalRepository.findById(rate_id).isEmpty()) {
             throw new EntityNotFoundException();
         }
 
-        Order order = orderService.createOrder(id, rate_id);
+       orderService.createOrder(id, rate_id);
 
         return new ModelAndView("redirect:/catalog");
     }

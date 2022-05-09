@@ -1,0 +1,59 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet  id="table_creation"  author="vyacheslav.salei">
+        <insert tableName="user_role">
+            <column name="role" value="USER"/>
+        </insert>
+        <insert tableName="profile">
+            <column name="first_name" value="admin"/>
+            <column name="last_name" value="admin"/>
+        </insert>
+        <insert tableName="auth_account">
+            <column name="login" value="slava"/>
+            <column name="password" value="$2a$12$FA7d6l7Ia/aZ3L/QfXBVnOn7nt8Vgi7DXGbk6Cb8ghinP8TVyF37i"/>
+            <column name="email" value="some.goes@mail.com"/>
+            <column name="status" value="APPROVED"/>
+            <column name="status" value="APPROVED"/>
+            <column name="profile_id" value="1"/>
+            <column name="role_id" value="1"/>
+        </insert>
+        <insert tableName="car">
+            <column name="mark" value="NEW Volkswagen Polo"/>
+            <column name="mileage" value="400"/>
+            <column name="booster" value="true"/>
+            <column name="charger" value="true"/>
+            <column name="toning" value="true"/>
+            <column name="cooler" value="true"/>
+            <column name="back_camera" value="true"/>
+            <column name="climate_control" value="true"/>
+            <column name="car_type" value="CAR"/>
+            <column name="status" value="FREE"/>
+        </insert>
+        <insert tableName="car">
+            <column name="mark" value="Volkswagen Tiguan"/>
+            <column name="mileage" value="430"/>
+            <column name="booster" value="true"/>
+            <column name="charger" value="NULL"/>
+            <column name="toning" value="true"/>
+            <column name="cooler" value="NULL"/>
+            <column name="back_camera" value="true"/>
+            <column name="climate_control" value="true"/>
+            <column name="car_type" value="ELECTRICALCAR"/>
+            <column name="status" value="FREE"/>
+        </insert>
+        <insert tableName="car">
+            <column name="mark" value="Volkswagen Tiguan"/>
+            <column name="mileage" value="430"/>
+            <column name="booster" value="true"/>
+            <column name="charger" value="NULL"/>
+            <column name="toning" value="true"/>
+            <column name="cooler" value="NULL"/>
+            <column name="back_camera" value="true"/>
+            <column name="climate_control" value="true"/>
+            <column name="car_type" value="ELECTRICALCAR"/>
+            <column name="status" value="FREE"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

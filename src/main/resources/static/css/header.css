@@ -2,7 +2,9 @@
     position: fixed;
     top: 0;
     width: 100%;
+    max-width: 100%;
     min-height: 60px;
+    max-height: 60px;
     z-index: 100;
     transition: 0.2s;
     background-color: rgba(0, 0, 0, 0.2);
@@ -19,11 +21,11 @@ a {
 }
 
 .user {
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
 a:hover {
-    background: linear-gradient(45deg, #0B2349 33%, #0D61BC 66%, #8AA9D6);
+    background: #383456;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

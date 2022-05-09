@@ -1,0 +1,49 @@
+.orders-list-wrapper {
+    padding-top: 156px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.order-div {
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    display: block;
+}
+
+.order-image-div {
+    width: 100%;
+}
+
+.order-info-div {
+    width: 100%;
+}
+
+.car-order-image {
+    width: 100%;
+    height: 70%;
+}
+
+.order-id-div {
+    text-align: center;
+}
+
+.order-confirm-button {
+    padding-top: 7px;
+    border-radius: 30px;
+    background-color: gold;
+    color: white;
+    font-size: 28px;
+    position: center;
+    text-align: center;
+    width: 250px;
+    height: 80px;
+    cursor: pointer;
+    font-weight: 1000;
+}
+
+.order-confirm-div {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}

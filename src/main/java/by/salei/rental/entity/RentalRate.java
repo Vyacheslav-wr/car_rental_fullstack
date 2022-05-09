@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class RentalRate extends BaseEntity {
 
     private String measurements;
-    private Double amount;
-    private Double amountForKilometer;
+    private Integer amount;
+    private Double cost;
+    private Double costForKilometer;
 }

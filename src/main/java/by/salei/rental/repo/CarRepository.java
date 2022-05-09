@@ -1,6 +1,7 @@
 package by.salei.rental.repo;
 
 import by.salei.rental.entity.Car;
+import by.salei.rental.entity.CarStatus;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -14,5 +15,5 @@ public interface CarRepository extends CrudRepository<Car, Integer> {
             " c.toning, c.cooler, c.status, c.back_camera, c.climate_control, c.car_type from car c", nativeQuery = true)
     List<Car> findDistinctByMark();
 
-    List<Car> findAllByStatus( String status);
+    List<Car> findAllByStatus(CarStatus status);
 }

@@ -1,0 +1,63 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet  id="rental_rate_creation"  author="vyacheslav.salei">
+        <insert tableName="rental_rate">
+            <column name="measurements" value="minutes"/>
+            <column name="amount" value="30"/>
+            <column name="cost" value="3.90"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+        <insert tableName="rental_rate">
+            <column name="measurements" value="minutes"/>
+            <column name="amount" value="60"/>
+            <column name="cost" value="6.90"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+        <insert tableName="rental_rate">
+            <column name="measurements" value="minutes"/>
+            <column name="amount" value="120"/>
+            <column name="cost" value="12.90"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+
+        <insert tableName="rental_rate">
+            <column name="measurements" value="hours"/>
+            <column name="amount" value="3"/>
+            <column name="cost" value="16.00"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+        <insert tableName="rental_rate">
+            <column name="measurements" value="hours"/>
+            <column name="amount" value="6"/>
+            <column name="cost" value="25.00"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+        <insert tableName="rental_rate">
+            <column name="measurements" value="hours"/>
+            <column name="amount" value="9"/>
+            <column name="cost" value="31.00"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+
+        <insert tableName="rental_rate">
+            <column name="measurements" value="days"/>
+            <column name="amount" value="1"/>
+            <column name="cost" value="34.00"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+        <insert tableName="rental_rate">
+            <column name="measurements" value="days"/>
+            <column name="amount" value="2"/>
+            <column name="cost" value="67.00"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+        <insert tableName="rental_rate">
+            <column name="measurements" value="days"/>
+            <column name="amount" value="3"/>
+            <column name="cost" value="97.00"/>
+            <column name="cost_for_kilometer" value="0.37"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,9 +1,11 @@
 body {
     background: linear-gradient(90deg, #C7C5F4, #776BCC);
+    max-width: 100%;
 }
 
 html {
     height: 100%;
+    overflow-x: hidden;
 }
 
 * {

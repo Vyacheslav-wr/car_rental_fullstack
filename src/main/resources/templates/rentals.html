@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rental rates</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/rental-rates.css"/>
+    <script src="/js/rental.js"></script>
+</head>
+<body>
+    <div class="header" th:replace="fragments/header.html::header"></div>
+    <div class="rental-rates-container">
+        <div class="rental-rate-items">
+            <div class="rental-tate-measurements">
+                <div class="measurement" th:each="measurment:${measurements}" th:id="${measurment.getMeasurements()}">
+                    <h2 th:if="${measurment.getMeasurements() eq 'minutes'}" id="minutes_header" onclick="minutesClick()">минуты и км</h2>
+                    <h2 th:if="${measurment.getMeasurements() eq 'hours'}" id="hours_header" onclick="hoursClick()">часы и км</h2>
+                    <h2 th:if="${measurment.getMeasurements() eq 'days'}" id="days_header" onclick="daysClick()">дни и км</h2>
+                </div>
+            </div>
+            <div class="rental-rate-list">
+                <div class="rental-rate rental-rate-header">
+                    <div class="cell-item" style="border-right: 2px solid #383456">
+                        <h1 id="measurement" class="text-area">All measurements</h1>
+                    </div>
+                    <div class="cell-item" style="border-left: 2px solid #383456">
+                        <h1 class="text-area">BYN</h1>
+                    </div>
+                </div>
+                <div th:each="rental:${rentals}" th:name="${rental.getMeasurements()}" class="rental-rate rental-rate-row">
+                    <div class="cell-item" style="border-right: 2px solid #383456">
+                        <h1 class="text-area" th:text="${rental.getAmount()}"></h1>
+                    </div>
+                    <div class="cell-item" style="border-left: 2px solid #383456">
+                        <h1 class="text-area" th:text="${rental.getCost()}"></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="house-image-container">
+        <img class="house-image" src="/images/house-thug.png"/>
+    </div>
+</body>
+</html>

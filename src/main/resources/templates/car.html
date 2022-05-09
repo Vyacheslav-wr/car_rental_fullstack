@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" xmlns:th="https://www.thymeleaf.org">
+    <title th:text="${car.getMark()}"></title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/car.css"/>
+    <script src="/js/car.js"></script>
+</head>
+<body>
+    <div class="header" th:replace="fragments/header.html::header"></div>
+    <div class="order-car-wrapper">
+        <div class="car-info-div">
+            <div class="car-image-div">
+                <img class="car-image-img" th:src="'/images/' + ${car.getMark()} + '.png'">
+                <h1 th:text="${car.getMark()}"></h1>
+                <input id="car_id" th:value="${car.getId()}" hidden>
+                <input id="rental_id" hidden>
+                <button class="order-button" type="button" onclick="sendDataToOrder()">ORDER</button>
+            </div>
+            <div class="car-spec-class">
+                <div class="car-details-div">
+                    <h2>Toning: </h2>
+                    <img class="choice-style" th:if="${car.getToning() ne null}" th:src="'/images/yes.png'">
+                    <img class="choice-style" th:unless="${car.getToning() ne null}" th:src="'/images/no.png'">
+                </div>
+                <div class="car-details-div">
+                    <h2>Cooler: </h2>
+                    <img class="choice-style" th:if="${car.getCooler() ne null}" th:src="'/images/yes.png'">
+                    <img class="choice-style" th:unless="${car.getCooler() ne null}" th:src="'/images/no.png'">
+                </div>
+                <div class="car-details-div">
+                    <h2>Climate Control: </h2>
+                    <img class="choice-style" th:if="${car.getClimateControl() ne null}" th:src="'/images/yes.png'">
+                    <img class="choice-style" th:unless="${car.getClimateControl() ne null}" th:src="'/images/no.png'">
+                </div>
+                <div class="car-details-div">
+                    <h2>Charger: </h2>
+                    <img class="choice-style"th:if="${car.getCharger() ne null}" th:src="'/images/yes.png'">
+                    <img class="choice-style" th:unless="${car.getCharger() ne null}" th:src="'/images/no.png'">
+                </div>
+                <div class="car-details-div">
+                    <h2>Booster: </h2>
+                    <img class="choice-style" th:if="${car.getBooster() ne null}" th:src="'/images/yes.png'">
+                    <img class="choice-style" th:unless="${car.getBooster() ne null}" th:src="'/images/no.png'">
+                </div>
+                <div class="car-details-div">
+                    <h2>Back camera: </h2>
+                    <img class="choice-style" th:if="${car.getBackCamera() ne null}" th:src="'/images/yes.png'">
+                    <img class="choice-style" th:unless="${car.getBackCamera() ne null}" th:src="'/images/no.png'">
+                </div>
+            </div>
+        </div>
+        <div class="rental-rates-for-order">
+            <div>
+                <h1 class="rental-rate-header-div">Please Choose your rental rate</h1>
+            </div>
+            <div class="options-wrapper">
+                <div th:id="${rental.getId()}" th:each="rental:${rentals}" class="rental-rate-option" th:onclick="'selectRentalOption(\'' + ${rental.getId()} + '\');'">
+                    <div class="rate-info">
+                        <h2 class="rental-option" th:text="${rental.getAmount() + ' ' + rental.getMeasurements()}"></h2>
+                        <h2 class="rental-option" th:text="${rental.getCost() + ' BYN'}"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

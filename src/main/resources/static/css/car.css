@@ -1,0 +1,95 @@
+.order-car-wrapper {
+    padding-top: 156px;
+    width: 100%;
+    height: 100%;
+}
+
+.car-info-div {
+    display: flex;
+}
+
+.car-image-div {
+    width: 30%;
+    height: inherit;
+    text-align: center;
+}
+
+.car-image-img {
+    width: 100%;
+    height: 270px;
+}
+
+.car-spec-class {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.car-details-div {
+    margin: 50px;
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+}
+
+.choice-style {
+    margin: 20px;
+    width: 70px;
+    height: 70px;
+    position: center;
+}
+
+.rental-rates-for-order {
+    display: block;
+    border-top: 20px #6C63AC solid;
+    background: linear-gradient(180deg, #8f8ec5, #552f96);
+}
+
+.rental-rate-option {
+    margin: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    max-height: 120px;
+    background: linear-gradient(360deg, #ceced7, #e1b81b);
+    cursor: pointer;
+    width: 180px;
+}
+
+.order-button {
+    border-radius: 30px;
+    background-color: gold;
+    color: white;
+    font-size: 28px;
+    position: center;
+    text-align: center;
+    width: 250px;
+    height: 80px;
+    cursor: pointer;
+    font-weight: 1000;
+}
+
+.rate-info {
+    margin: 20px;
+}
+
+.rental-option {
+    color: white;
+}
+
+.rental-rate-header-div {
+    text-align: center;
+}
+
+.options-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
