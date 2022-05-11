@@ -17,7 +17,7 @@
         <div class="cars-wrapper">
             <div th:each="car:${cars}" class="car" th:onclick="'getCarById(\'' + ${car.getId()} + '\');'">
                 <div class="car-image-wrapper">
-                    <img th:src="${'/images/' + car.getMark() + '.png'}" class="car-image">
+                    <img th:src="${'/images/' + car.getMark() + '.png'}" class="car-image" onerror="if (this.src != 'error.jpg') this.src = '/images/default.png';">
                 </div>
                 <div class="car-name">
                     <h2 th:text="${car.getMark()}"></h2>

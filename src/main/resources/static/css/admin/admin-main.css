@@ -1,0 +1,45 @@
+.choice-admin {
+    justify-content: center;
+    margin-top: 100px;
+    width: 500px;
+    height: 500px;
+    border: 2px solid;
+    position: center;
+}
+
+.car-list {
+    justify-content: center;
+    text-align: center;
+    margin-top: 220px;
+}
+
+.rental-list {
+    justify-content: center;
+    text-align: center;
+}
+
+.car-list-button {
+    border-radius: 30px;
+    background-color: gold;
+    color: white;
+    font-size: 28px;
+    position: center;
+    text-align: center;
+    width: 250px;
+    height: 80px;
+    cursor: pointer;
+    font-weight: 1000;
+}
+
+.rental-list-button {
+    border-radius: 30px;
+    background-color: gold;
+    color: white;
+    font-size: 28px;
+    position: center;
+    text-align: center;
+    width: 250px;
+    height: 80px;
+    cursor: pointer;
+    font-weight: 1000;
+}

@@ -11,21 +11,25 @@ function changePageTo2() {
     var email = document.getElementById("email");
 
     if (username.value == "") {
-        alert("Username field must not be null");
+        toastr.options.positionClass = "toast-bottom-right";
+        toastr.warning("Username must not be null");
         return false;
     }
     if (pass.value == "") {
-        alert("Password field must not be null");
+        toastr.options.positionClass = "toast-bottom-right";
+        toastr.warning("Password must not be null");
         return false;
     }
 
     if (email.value == "") {
-        alert("Email field must not be null");
+        toastr.options.positionClass = "toast-bottom-right";
+        toastr.warning("Email must not be null");
         return false;
     }
 
     if (pass.value !== rep_pass.value) {
-        alert("Passwords must be equal");
+        toastr.options.positionClass = "toast-bottom-right";
+        toastr.warning("Passwords must equal");
         return false;
     }
 

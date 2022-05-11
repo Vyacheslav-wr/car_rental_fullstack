@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Or Edit</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/admin/car-edit-create.css"/>
+</head>
+<body>
+    <div class="car-info-div">
+        <form class="form-to-accept" action="/admin/car/create" method="post">
+            <label for="mileage">Car Mileage</label>
+            <input id="mileage" name="mileage" required/>
+            <label for="mark">Mark</label>
+            <input id="mark" name="mark" required/>
+            <label for="car_type">Choose Car Type</label>
+            <select name="carType" id="car_type" >
+                <option value="CAR">Car</option>
+                <option value="ELECTRICALCAR">Electrical car</option>
+            </select>
+            <button class="create-button" type="submit">Create New Car</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -10,46 +10,42 @@
 <body>
     <div class="header" th:replace="fragments/header.html::header"></div></body>
     <div class="auth-account-wrapper">
-        <form action="#" method="post">
+        <form action="/authAccount/update" method="post">
             <div class="auth-account-info">
                 <div class="margin-bottom-div">
                     <label for="username">Login: </label>
-                    <input id="username" th:value="${user.getLogin()}"/>
+                    <input id="username" name="username" th:value="${user.getLogin()}"/>
                 </div>
                 <div class="margin-bottom-div">
                     <label for="password">Password: </label>
-                    <input id="password" type="password" th:value="${user.getPassword()}"/>
+                    <input id="password" name="password" type="password"/>
                 </div>
                 <div class="margin-bottom-div">
-                    <label for="rep_password">Repeat Password</label>
-                    <input id="rep_password" type="password"/>
+                    <label for="repeat_password">Repeat Password</label>
+                    <input id="repeat_password" name="repeatPassword" type="password"/>
                 </div>
                 <div class="margin-bottom-div">
                     <label for="email">Email: </label>
-                    <input id="email" type="email" th:value="${user.getEmail()}"/>
+                    <input id="email" name="email" type="email" th:value="${user.getEmail()}"/>
                 </div>
                 <div class="margin-bottom-div">
                     <label for="first_name">First Name: </label>
-                    <input id="first_name" th:value="${user.getProfile().getFirstName()}"/>
+                    <input id="first_name" name="firstName" th:value="${user.getProfile().getFirstName()}"/>
                 </div>
                 <div class="margin-bottom-div">
                     <label for="last_name">Last Name: </label>
-                    <input id="last_name" th:value="${user.getProfile().getLastName()}"/>
+                    <input id="last_name" name="lastName" th:value="${user.getProfile().getLastName()}"/>
                 </div>
                 <div class="margin-bottom-div">
                     <label for="middle_name">Middle Name: </label>
-                    <input id="middle_name" th:value="${user.getProfile().getMiddleName()}"/>
+                    <input id="middle_name" name="middleName" th:value="${user.getProfile().getMiddleName()}"/>
                 </div>
                 <div class="margin-bottom-div">
                     <label for="phone_number">Phone Number: </label>
-                    <input id="phone_number" th:value="${user.getProfile().getPhoneNumber()}"/>
+                    <input id="phone_number" name="phoneNumber" th:value="${user.getProfile().getPhoneNumber()}"/>
                 </div>
-                <div class="margin-bottom-div">
-                    <label for="age">Age: </label>
-                    <input id="age" th:value="${user.getProfile().getAge()}"/>
-                </div>
-                <div>
-                    <button type="submit">Save</button>
+                <div class="submit-button-div">
+                    <button class="auth-account-submit" type="submit">Save</button>
                 </div>
             </div>
         </form>

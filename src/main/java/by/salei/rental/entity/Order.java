@@ -20,7 +20,7 @@ public class Order extends BaseEntity {
     @JoinColumn(name = "auth_account_id")
     private AuthAccount authAccount;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id")
     private Car car;
 

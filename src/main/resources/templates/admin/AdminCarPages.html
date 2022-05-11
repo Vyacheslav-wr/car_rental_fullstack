@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/cars-to-order.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/admin/car-edit-create.css"/>
+    <script src="/js/car.js"></script>
+</head>
+<body>
+<div class="car-items-container">
+    <button class="create-button">
+        <a href="/admin">
+            Back to main
+        </a>
+    </button>
+    <button class="create-button">
+        <a href="/admin/car/create/page">
+            Create New Car
+        </a>
+    </button>
+    <div class="cars-wrapper">
+        <div th:each="car:${cars}" class="car" th:onclick="'getAdminCarById(\'' + ${car.getId()} + '\');'">
+            <div class="car-image-wrapper">
+                <img th:src="${'/images/' + car.getMark() + '.png'}" class="car-image"  onerror="if (this.src != 'error.jpg') this.src = '/images/default.png';">
+            </div>
+            <div class="car-name">
+                <h2 th:text="${car.getMark()}"></h2>
+            </div>
+            <button class="create-button">
+                <a th:href="${'/admin/car/' + car.getId() + '/delete'}">
+                    Delete
+                </a>
+            </button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -31,8 +31,10 @@ public class MainPageController {
 
         if(repository.findByLogin(userName) != null) {
             mv.addObject("user", repository.findByLogin(userName));
+            if(repository.findByLogin(userName).getRole().getRole().toString().equals("ADMIN")) {
+                mv.setViewName("admin/admin-main");
+            }
         }
-
 
         return mv;
     }

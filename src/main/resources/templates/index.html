@@ -12,14 +12,14 @@
 </head>
 <body>
     <div class="header" th:replace="fragments/header.html::header"></div>
-    <h1 style="text-align:center; padding-top:100px; color: #383456">Наши тачки</h1>
+    <h1 style="text-align:center; padding-top:100px; color: #383456">Our Cars</h1>
     <div class="slider">
         <div class="slider__container">
             <div class="slider__wrapper">
                 <div class="slider__items">
                     <div th:each="car:${cars}" class="slider__item">
                         <div class="car-and-spec">
-                            <img class="car" th:src="'/images/' + ${car.getMark() + '.png'}" height="60px" width="30%"/>
+                            <img class="car" th:src="'/images/' + ${car.getMark() + '.png'}" height="60px" width="30%" onerror="if (this.src != 'error.jpg') this.src = '/images/default.png';"/>
                         </div>
                         <div class="car-and-spec">
                             <h2 style="font-family: 'Open Sans',sans-serif !important; color: #383456;" th:text="${car.getMark()}"></h2>

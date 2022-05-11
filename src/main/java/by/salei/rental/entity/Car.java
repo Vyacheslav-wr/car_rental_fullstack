@@ -3,10 +3,8 @@ package by.salei.rental.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -28,4 +26,7 @@ public class Car extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private CarType carType;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+    private List<Order> order;
 }

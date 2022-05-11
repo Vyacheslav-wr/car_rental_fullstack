@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Car</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/admin/car-edit-create.css"/>
+</head>
+<body>
+    <div class="car-info-div">
+        <form class="form-to-accept" th:action="${'/admin/car/' + car.getId() + '/update'}" method="post">
+            <label for="mileage">Car Mileage</label>
+            <input id="mileage" name="mileage" th:value="${car.getMileage()}" required/>
+            <label for="mark">Mark</label>
+            <input id="mark" name="mark" th:value="${car.getMark()}" required/>
+            <label for="car_type">Choose Car Type</label>
+            <select name="carType" id="car_type" th:selected="${car.getCarType()}">
+                <option value="CAR">Car</option>
+                <option value="ELECTRICALCAR">Electrical car</option>
+            </select>
+            <button type="submit" class="create-button">Update Car</button>
+        </form>
+    </div>
+</body>
+</html>
