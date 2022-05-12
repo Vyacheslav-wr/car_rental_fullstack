@@ -3,7 +3,7 @@
 
     <changeSet  id="table_creation"  author="vyacheslav.salei">
         <insert tableName="user_role">
-            <column name="role" value="USER"/>
+            <column name="role" value="ADMIN"/>
         </insert>
         <insert tableName="profile">
             <column name="first_name" value="admin"/>
@@ -13,7 +13,6 @@
             <column name="login" value="slava"/>
             <column name="password" value="$2a$12$FA7d6l7Ia/aZ3L/QfXBVnOn7nt8Vgi7DXGbk6Cb8ghinP8TVyF37i"/>
             <column name="email" value="some.goes@mail.com"/>
-            <column name="status" value="APPROVED"/>
             <column name="status" value="APPROVED"/>
             <column name="profile_id" value="1"/>
             <column name="role_id" value="1"/>
