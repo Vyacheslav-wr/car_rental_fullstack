@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="/css/header.css"/>
 </head>
 <body>
     <div class="header" th:fragment="header">
@@ -19,6 +20,7 @@
             <a th:href="${'/authAccount/' + user.getId()}" th:text="${user.getProfile().getFirstName() + ' ' + user.getProfile().getLastName()}"/>
             <a th:href="${'/authAccount/' + user.getId() + '/orders'}">Orders</a>
             <a href="/auth/logout">Log out</a>
+            <a th:if="${user.getRole().getRole().toString() eq 'ADMIN'}" href="/admin">Admin Page</a>
         </div>
         <div class="user" th:unless="${user} ne null">
             <a href="/auth/login">Sing in</a>

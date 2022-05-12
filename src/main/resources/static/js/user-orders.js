@@ -9,9 +9,9 @@ function sendDataToFinish() {
         headers: { "Content-type": "application/json; charset=UTF-8", },
     }).then( response => {
         if(response.status === 200) {
-            alert("Order successfully finished");
+            toastr.options.positionClass = "toast-bottom-right";
+            toastr.success("Order finally done");
+            setTimeout(() => { location.reload() }, 1000);
         }
-        console.log( "/authAccount/" + auth_id + "/orders");
-        window.location.href = "/authAccount/" + auth_id + "/orders";
     })
 }

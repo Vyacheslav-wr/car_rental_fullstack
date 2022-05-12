@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Orders</title>
@@ -7,16 +7,17 @@
     <link rel="stylesheet" type="text/css" href="/css/header.css"/>
     <link rel="stylesheet" type="text/css" href="/css/user-orders.css"/>
     <script src="/js/user-orders.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
 </head>
 <body>
-<input id="auth-id" th:value="${user.getId()}" hidden>
+    <input id="auth-id" th:value="${user.getId()}" hidden>
     <div class="header" th:replace="fragments/header.html::header"></div></body>
     <div class="orders-list-wrapper">
         <div class="order-div" th:each="order:${orders}">
             <input id="order-id" th:value="${order.getId()}" hidden>
             <div class="order-info-div">
                 <div class="order-image-div">
-                    <img class="car-order-image" th:src="${'/images/' + order.getCar().getMark() + '.png'}"/>
+                    <img class="car-order-image" th:src="${'/images/' + order.getCar().getMark() + '.png'}"  onerror="if (this.src != 'error.jpg') this.src = '/images/default.png';"/>
                 </div>
                 <div class="order-id-div">
                     <h2 th:text="${'#' + order.getId()}"></h2>
@@ -26,5 +27,11 @@
                 <button class="order-confirm-button" type="button" onclick="sendDataToFinish()">Finish Order</button>
             </div>
         </div>
+        <div th:if="${orders.size() == 0}" style="margin-left: 800px">
+            <h1 style="position: center">You have no orders.....</h1>
+        </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+</body>
 </html>
