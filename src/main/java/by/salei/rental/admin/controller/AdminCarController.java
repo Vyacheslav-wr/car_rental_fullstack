@@ -40,6 +40,7 @@ public class AdminCarController {
         dto.setCharger(true);
         dto.setClimateControl(true);
         Car car = mapper.convert(dto);
+        car.setStatus(CarStatus.FREE);
 
         repository.save(car);
 
