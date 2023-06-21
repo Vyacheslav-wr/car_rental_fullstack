@@ -30,7 +30,6 @@ public class AuthAccountController {
     private final OrderService orderService;
     private final AuthAccountRepository repository;
     private final AuthAccountService authAccountService;
-    private final CarRepository carRepository;
     private final PasswordEncoder encoder;
 
     @PostMapping("/create")
@@ -78,8 +77,9 @@ public class AuthAccountController {
 
         ModelAndView mv = new ModelAndView("auth-account");
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        AuthAccount user = authAccountService.findUserByLogin(userName);
 
-        if(repository.findByLogin(userName) != null) {
+        if(user != null) {
             mv.addObject("user", repository.findByLogin(userName));
         }
 

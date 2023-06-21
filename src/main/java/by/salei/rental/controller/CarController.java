@@ -1,9 +1,11 @@
 package by.salei.rental.controller;
 
+import by.salei.rental.entity.AuthAccount;
 import by.salei.rental.entity.CarStatus;
 import by.salei.rental.repo.AuthAccountRepository;
 import by.salei.rental.repo.CarRepository;
 import by.salei.rental.repo.RentalRateRepository;
+import by.salei.rental.service.api.AuthAccountService;
 import by.salei.rental.service.api.CarService;
 import by.salei.rental.service.api.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ public class CarController {
     private final RentalRateRepository rentalRepository;
     private final OrderService orderService;
     private final AuthAccountRepository authAccountRepository;
+    private final AuthAccountService authAccountService;
 
     @GetMapping("/catalog")
     public ModelAndView getAllMarks() {
@@ -33,9 +36,9 @@ public class CarController {
         mv.addObject("cars", repository.findAllByStatus(CarStatus.FREE));
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        if(authAccountRepository.findByLogin(userName) != null) {
-            mv.addObject("user", authAccountRepository.findByLogin(userName));
-        }
+        AuthAccount authAccount = authAccountService.findUserByLogin(userName);
+
+        mv.addObject("user", authAccount);
 
         return mv;
     }

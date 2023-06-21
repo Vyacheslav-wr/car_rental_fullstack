@@ -21,7 +21,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.Date;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/order")
 @RequiredArgsConstructor
 public class OrderController {
