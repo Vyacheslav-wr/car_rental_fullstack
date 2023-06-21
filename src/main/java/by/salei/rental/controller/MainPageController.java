@@ -5,13 +5,14 @@ import by.salei.rental.repo.AuthAccountRepository;
 import by.salei.rental.repo.CarRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class MainPageController {
 

@@ -8,12 +8,13 @@ import by.salei.rental.service.api.CarService;
 import by.salei.rental.service.api.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.EntityNotFoundException;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/car")
 public class CarController {

@@ -10,23 +10,21 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class BaseServiceImpl <E extends BaseEntity, R extends CrudRepository> implements BaseService<E> {
-
-    private R repository;
+public abstract class BaseServiceImpl <E extends BaseEntity, R extends CrudRepository<E, Integer>> implements BaseService<E> {
 
     @Override
     public Integer save(E entity) {
-        return ((BaseEntity) repository.save(entity)).getId();
+        return getDefaultRepo().save(entity).getId();
     }
 
     @Override
     public void delete(Integer id) {
-        repository.deleteById(id);
+        getDefaultRepo().deleteById(id);
     }
 
     @Override
     public void update(E entity) {
-        repository.save(entity);
+        getDefaultRepo().save(entity);
     }
 
     @Override
@@ -36,10 +34,8 @@ public class BaseServiceImpl <E extends BaseEntity, R extends CrudRepository> im
 
     @Override
     public Iterable<E> getAll() {
-        return repository.findAll();
+        return getDefaultRepo().findAll();
     }
 
-    public R getDefaultRepo(){
-        return null;
-    }
+    public abstract R getDefaultRepo();
 }

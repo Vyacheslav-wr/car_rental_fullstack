@@ -12,7 +12,9 @@ import javax.persistence.*;
 public class AuthAccount extends BaseEntity {
 
     private String login;
+
     private String password;
+
     private String email;
 
     @Enumerated(EnumType.STRING)

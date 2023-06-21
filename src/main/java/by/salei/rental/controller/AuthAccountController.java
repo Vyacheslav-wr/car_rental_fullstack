@@ -9,24 +9,27 @@ import by.salei.rental.repo.AuthAccountRepository;
 import by.salei.rental.repo.CarRepository;
 import by.salei.rental.repo.OrderRepository;
 import by.salei.rental.service.api.AuthAccountService;
+import by.salei.rental.service.api.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.beans.Encoder;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/authAccount")
 public class AuthAccountController {
 
     private final AuthAccountService service;
-    private final OrderRepository orderRepository;
+    private final OrderService orderService;
     private final AuthAccountRepository repository;
+    private final AuthAccountService authAccountService;
     private final CarRepository carRepository;
     private final PasswordEncoder encoder;
 
@@ -51,38 +54,21 @@ public class AuthAccountController {
     @PostMapping("/update")
     public ModelAndView updateUserAccount(AuthAccountReg account) {
 
-        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        AuthAccount authAccount = service.updateUser(account);
 
-        AuthAccount aa = repository.findByLogin(userName);
-        ModelAndView mv = new ModelAndView("redirect:/authAccount/" + aa.getId());
-        Profile p = aa.getProfile();
-
-        if(account.getPassword() != null) {
-            aa.setPassword(encoder.encode(account.getPassword()));
-        }
-        p.setFirstName(account.getFirstName());
-        p.setLastName(account.getLastName());
-        p.setMiddleName(account.getMiddleName());
-        p.setPhoneNumber(account.getPhoneNumber());
-
-        aa.setLogin(account.getUsername());
-        aa.setEmail(account.getEmail());
-        aa.setProfile(p);
-        repository.save(aa);
-
-        return mv;
+        return  new ModelAndView("redirect:/authAccount/" + authAccount.getId());
     }
 
     @GetMapping("/{id}/orders")
     public ModelAndView showAllOrders(@PathVariable(name = "id") Integer id) {
 
         ModelAndView mv = new ModelAndView("user-orders");
-        mv.addObject("orders", orderRepository.findAllByAuthAccountIdAndStatus(id, OrderStatus.INPROGRESS));
+        mv.addObject("orders", orderService.getAllUserOrders(id));
         String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        if(repository.findByLogin(userName) != null) {
-            mv.addObject("user", repository.findByLogin(userName));
-        }
+        AuthAccount user = authAccountService.findUserByLogin(userName);
+
+        mv.addObject("user", user);
 
         return mv;
     }

@@ -1,6 +1,7 @@
 package by.salei.rental.config;
 
 import by.salei.rental.security.UserDetailsServiceImpl;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/*").permitAll()
                 .antMatchers("/authAccount/create").permitAll()
                 .antMatchers("/auth/register").permitAll()
-                .antMatchers("/admin/**").permitAll()/*hasAuthority("ADMIN")*/
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/car/**").permitAll()
                 .antMatchers("/rates/*").permitAll()
                 .antMatchers("/order/create").permitAll()

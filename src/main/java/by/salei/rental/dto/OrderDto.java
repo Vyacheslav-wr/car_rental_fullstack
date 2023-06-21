@@ -8,5 +8,6 @@ import org.springframework.stereotype.Component;
 public class OrderDto {
 
     private Integer rental_id;
+
     private Integer car_id;
 }

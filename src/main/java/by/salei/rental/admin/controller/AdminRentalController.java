@@ -3,12 +3,13 @@ package by.salei.rental.admin.controller;
 import by.salei.rental.entity.RentalRate;
 import by.salei.rental.repo.RentalRateRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin")
 public class AdminRentalController {

@@ -7,6 +7,7 @@ import by.salei.rental.entity.CarType;
 import by.salei.rental.mapper.CarMapper;
 import by.salei.rental.repo.CarRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.io.IOException;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 @RequestMapping("/admin")
 public class AdminCarController {

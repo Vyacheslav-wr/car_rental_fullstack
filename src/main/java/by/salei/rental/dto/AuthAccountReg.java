@@ -8,12 +8,20 @@ import org.springframework.stereotype.Component;
 public class AuthAccountReg {
 
     private String username;
+
     private String password;
+
     private String repeat_password;
+
     private String email;
+
     private String firstName;
+
     private String lastName;
+
     private String phoneNumber;
+
     private String middleName;
+
     private Integer age;
 }

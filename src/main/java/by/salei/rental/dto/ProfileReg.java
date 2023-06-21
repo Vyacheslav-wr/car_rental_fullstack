@@ -8,8 +8,12 @@ import org.springframework.stereotype.Component;
 public class ProfileReg {
 
     private String firstName;
+
     private String lastName;
+
     private String middleName;
+
     private String phoneNumber;
+
     private String age;
 }

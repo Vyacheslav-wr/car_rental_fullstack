@@ -11,9 +11,11 @@ import by.salei.rental.service.api.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
+
+import static by.salei.rental.entity.OrderStatus.*;
 
 @Service
 @RequiredArgsConstructor
@@ -34,12 +36,23 @@ public class OrderServiceImpl extends BaseServiceImpl<Order, OrderRepository> im
         if(car.isPresent() && rentalRate.isPresent()) {
             order.setCar(car.get());
             order.setRate(rentalRate.get());
-//            order.setStatus(OrderStatus.INPROGRESS);
+            order.setStatus(OrderStatus.INPROGRESS);
             order.setDate(new Date());
 
             orderRepository.save(order);
         }
 
          return order;
+    }
+
+    @Override
+    public List<Order> getAllUserOrders(Integer id) {
+        List<OrderStatus> orderStatuses = List.of(INPROGRESS, PAID, DONE);
+        return orderRepository.findAllByAuthAccountIdAndStatusIn(id, orderStatuses);
+    }
+
+    @Override
+    public OrderRepository getDefaultRepo() {
+        return orderRepository;
     }
 }
